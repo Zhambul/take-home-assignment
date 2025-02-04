@@ -13,9 +13,11 @@ import java.math.BigDecimal
 
 
 fun main(args: Array<String>) {
-    val bettingAmount = getBettingAmount(parseArguments(args))
+    val commandArgs = parseArguments(args)
+    val bettingAmount = getBettingAmount(commandArgs)
+    val configPath = getConfigPath(commandArgs)
 
-    val gameService: GameService = createGameService()
+    val gameService: GameService = createGameService(configPath)
 
     val gameResult: GameResult = gameService.play(bettingAmount)
 
@@ -42,8 +44,14 @@ fun getBettingAmount(argsMap: Map<String, String>): BigDecimal {
         ?: throw IllegalArgumentException("Error: --betting-amount must be a valid double.")
 }
 
-private fun createGameService(): GameService {
-    val configProvider: GameConfigProvider = FileGameConfigProvider("config.json")
+fun getConfigPath(argsMap: Map<String, String>): String {
+    return argsMap["--config"]
+        ?: throw IllegalArgumentException("Error: --config is required.")
+}
+
+
+private fun createGameService(configPath: String): GameService {
+    val configProvider: GameConfigProvider = FileGameConfigProvider(configPath)
     val matrixGenerator: MatrixGenerator = RandomMatrixGenerator()
     val combinationFinder: CombinationFinder = AllCombinationFinder(
         listOf(
