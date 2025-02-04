@@ -26,23 +26,6 @@ The game uses a `config.json` file to define:
 - Winning combinations
 - Reward multipliers
 
-### Configuration Example
-
-```json
-{
-    "columns": 3,
-    "rows": 3,
-    "symbols": {
-        "A": {
-          "reward_multiplier": 5,
-          "type": "standard"
-        },
-        ...
-    }
-    // Additional configuration details
-}
-```
-
 ## Building the Project
 
 ### Using Gradle
