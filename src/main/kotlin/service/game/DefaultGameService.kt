@@ -1,15 +1,13 @@
-package service
+package service.game
 
 import domain.GameResult
 import domain.Matrix
 import domain.WonCombination
+import service.GameConfigProvider
+import service.RewardCalculator
 import service.combination.CombinationFinder
 import service.matrix.MatrixGenerator
 import java.math.BigDecimal
-
-interface GameService {
-    fun play(bettingAmount: BigDecimal): GameResult
-}
 
 class DefaultGameService(
     private val configProvider: GameConfigProvider,

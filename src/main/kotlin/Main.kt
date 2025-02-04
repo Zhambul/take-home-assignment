@@ -5,6 +5,8 @@ import service.combination.AllCombinationFinder
 import service.combination.CombinationFinder
 import service.combination.LinearSymbolsCombinationFinder
 import service.combination.SameSymbolsCombinationFinder
+import service.game.DefaultGameService
+import service.game.GameService
 import service.matrix.MatrixGenerator
 import service.matrix.RandomMatrixGenerator
 import java.math.BigDecimal
